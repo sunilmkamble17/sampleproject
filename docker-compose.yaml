@@ -1,0 +1,27 @@
+version: '1'
+services:
+ 
+ eventbus_svc:
+  build: ./event-bus
+  ports:
+   - "5001:4001"
+
+ use_svc:
+  build: ./user
+  ports:
+   - "5002:4002"
+
+ product_svc:
+  build: ./product
+  ports:
+   - "5003:4003"
+ 
+ order_svc:
+  build: ./order
+  ports:
+   - "5004:4004"
+   
+ ui_svc:
+  build: ./ui
+  ports:
+   - "4200:4200"
