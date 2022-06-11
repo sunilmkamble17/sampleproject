@@ -27,6 +27,6 @@ spec:
   ports:
     - name: event-bus
       protocol: TCP
-      port: 4004
-      targetPort: 4004
+      port: 4001
+      targetPort: 4001
 

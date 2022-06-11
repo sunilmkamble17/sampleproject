@@ -33,5 +33,5 @@ app.get('/event-bus/event', (req, resp) => {
 });
 
 app.listen(4001, () => {
-  console.log("event bus started @4005");
+  console.log("event bus started @4001");
 });

@@ -16,21 +16,21 @@ spec:
               service:
                 name: product-srv
                 port:
-                  number: 4001
+                  number: 4003
           - path: '/api/getalliproducts'
             pathType: Prefix
             backend:
               service:
                 name: product-srv
                 port:
-                  number: 4001
+                  number: 4003
           - path: '/api/deleteproduct'
             pathType: Prefix
             backend:
               service:
                 name: product-srv
                 port:
-                  number: 4001
+                  number: 4003
           - path: '/api/register'
             pathType: Prefix
             backend:
@@ -51,18 +51,18 @@ spec:
               service:
                 name: order-srv
                 port:
-                  number: 4003
+                  number: 4004
           - path: '/api/getordereditems'
             pathType: Prefix
             backend:
               service:
                 name: order-srv
                 port:
-                  number: 4003
+                  number: 4004
           - path: /?(.*)
             pathType: Prefix
             backend:
               service:
                 name: ui-srv
                 port:
-                  number: 3000
+                  number: 4200

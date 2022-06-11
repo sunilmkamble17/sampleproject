@@ -27,6 +27,6 @@ spec:
   ports:
     - name: ui
       protocol: TCP
-      port: 3000
-      targetPort: 3000
+      port: 4200
+      targetPort: 4200
 
