@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="col-sm-4" *ngFor="let order of orderList">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title font-weight-bold text-truncate">#{{order.item_id}} - {{order.prod_name}}</h5>
+          <p class="card-text"><small>Quantity:</small> {{order.quantity}}</p>
+          <!-- <p class="card-text"><small>Price:</small> ${{order.price}}</p> -->
+          <p class="card-text text-truncate"><small>Supplier:</small> {{order.supplier_email}}</p>
+          
+        </div>
+      </div>
+    </div>
+  </div>

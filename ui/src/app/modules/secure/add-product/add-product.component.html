@@ -1,0 +1,40 @@
+<div class="container">
+    <h3>Products</h3>
+    <button type="button" class="btn btn-primary float-right" style="border-radius: 50%" data-bs-toggle="modal" data-bs-target="#addProductModal">
+        +
+    </button>
+</div>
+
+<div class="modal" id="addProductModal">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Add Product</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="addProductForm">
+                        <div class="form-floating mb-3 mt-3">
+                            <input type="text" class="form-control" id="name" placeholder="Product Name" formControlName="name">
+                            <label for="name">Product Name</label>
+                        </div>
+                        <div class="form-floating mb-3 mt-3">
+                            <input type="text" class="form-control" id="price" placeholder="Price" formControlName="price">
+                            <label for="price">Price</label>
+                        </div>
+                        <div class="form-floating mb-3 mt-3">
+                            <input type="text" class="form-control" id="quantity" placeholder="Quantity" formControlName="quantity">
+                            <label for="quantity">Quantity</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button #closeModal type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" (click)="addProduct()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
