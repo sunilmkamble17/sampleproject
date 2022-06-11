@@ -6,7 +6,7 @@ services:
   ports:
    - "5001:4001"
 
- use_svc:
+ user_svc:
   build: ./user
   ports:
    - "5002:4002"

@@ -1,0 +1,68 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-srv
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/user-regex: 'true'
+spec:
+  rules:
+    - host: order.com
+      http:
+        paths:
+          - path: '/api/createeditproduct'
+            pathType: Prefix
+            backend:
+              service:
+                name: product-srv
+                port:
+                  number: 4001
+          - path: '/api/getalliproducts'
+            pathType: Prefix
+            backend:
+              service:
+                name: product-srv
+                port:
+                  number: 4001
+          - path: '/api/deleteproduct'
+            pathType: Prefix
+            backend:
+              service:
+                name: product-srv
+                port:
+                  number: 4001
+          - path: '/api/register'
+            pathType: Prefix
+            backend:
+              service:
+                name: user-srv
+                port:
+                  number: 4002
+          - path: '/api/userlogin'
+            pathType: Prefix
+            backend:
+              service:
+                name: user-srv
+                port:
+                  number: 4002
+          - path: '/api/orderitem'
+            pathType: Prefix
+            backend:
+              service:
+                name: order-srv
+                port:
+                  number: 4003
+          - path: '/api/getordereditems'
+            pathType: Prefix
+            backend:
+              service:
+                name: order-srv
+                port:
+                  number: 4003
+          - path: /?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: ui-srv
+                port:
+                  number: 3000
