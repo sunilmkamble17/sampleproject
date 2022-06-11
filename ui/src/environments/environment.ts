@@ -4,7 +4,16 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'https://8x12yn4aj1.execute-api.us-east-1.amazonaws.com/dev/api', // Dev Environment
+  // baseUrl: 'https://8x12yn4aj1.execute-api.us-east-1.amazonaws.com/dev/api', // Dev Environment
+  // baseUrlEventBus: 'https://8x12yn4aj1.execute-api.us-east-1.amazonaws.com/dev/api', // Dev Environment
+  // baseUrlUser: 'https://8x12yn4aj1.execute-api.us-east-1.amazonaws.com/dev/api', // Dev Environment
+  // baseUrlProduct: 'https://8x12yn4aj1.execute-api.us-east-1.amazonaws.com/dev/api', // Dev Environment
+  // baseUrlOrder: 'https://8x12yn4aj1.execute-api.us-east-1.amazonaws.com/dev/api', // Dev Environment
+
+  baseUrlEventBus: 'localhost:4001',
+  baseUrlUser: 'localhost:4002',
+  baseUrlProduct: 'localhost:4003',
+  baseUrlOrder: 'localhost:4004',
   // baseUrl: '', // Test Environment
   // baseUrl: '', // UAT Environment
   // baseUrl: '', // Prod Environment

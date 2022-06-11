@@ -6,49 +6,44 @@
 import { environment } from 'src/environments/environment';
 
 export class AppSetting {
-  static baseUrl = environment.baseUrl;
+  static baseUrlEventBus = environment.baseUrlEventBus;
+  static baseUrlOrder = environment.baseUrlOrder;
+  static baseUrlProduct = environment.baseUrlProduct;
+  static baseUrlUser = environment.baseUrlUser;
 
   static signup = {
-    register: AppSetting.baseUrl + `/register`,
+    register: AppSetting.baseUrlUser + `/register`,
   }
 
   static login = {
-    userlogin: AppSetting.baseUrl + `/userlogin`,
+    userlogin: AppSetting.baseUrlUser + `/userlogin`,
   }
 
   static forgotPassword = {
-    forgotPassword: AppSetting.baseUrl + `/forgotPassword`,
+    forgotPassword: AppSetting.baseUrlUser + `/forgotPassword`,
   }
 
   static user = {
-    addUser: AppSetting.baseUrl + `/register`,
-    // editUser: AppSetting.baseUrl + `/editUser`,
-    // deleteUser: AppSetting.baseUrl + `/deleteUser`,
-    // getUserById: AppSetting.baseUrl + `/getUserById`,
-    // getAllUser: AppSetting.baseUrl + `/getAllUser`,
-  }
-
-  static customer = {
-    // addCustomer: AppSetting.baseUrl + `/addCustomer`,
-    // editCustomer: AppSetting.baseUrl + `/editCustomer`,
-    // deleteCustomer: AppSetting.baseUrl + `/deleteCustomer`,
-    // getCustomerById: AppSetting.baseUrl + `/getCustomerById`,
-    // getAllCustomer: AppSetting.baseUrl + `/getAllCustomer`,
+    addUser: AppSetting.baseUrlUser + `/register`,
+    // editUser: AppSetting.baseUrlUser + `/editUser`,
+    // deleteUser: AppSetting.baseUrlUser + `/deleteUser`,
+    // getUserById: AppSetting.baseUrlUser + `/getUserById`,
+    // getAllUser: AppSetting.baseUrlUser + `/getAllUser`,
   }
 
   static product = {
-    addProduct: AppSetting.baseUrl + `/createeditproduct`,
-    editProduct: AppSetting.baseUrl + `/createeditproduct`,
-    deleteProduct: AppSetting.baseUrl + `/deleteproduct`,
-    // getProductById: AppSetting.baseUrl + `/getproduct/{productId}`,
-    getAllProduct: AppSetting.baseUrl + `/getalliproducts`,
+    addProduct: AppSetting.baseUrlProduct + `/createeditproduct`,
+    editProduct: AppSetting.baseUrlProduct + `/createeditproduct`,
+    deleteProduct: AppSetting.baseUrlProduct + `/deleteproduct`,
+    // getProductById: AppSetting.baseUrlProduct + `/getproduct/{productId}`,
+    getAllProduct: AppSetting.baseUrlProduct + `/getalliproducts`,
   }
 
   static order = {
-    addOrder: AppSetting.baseUrl + `/orderitem`,
-    // editOrder: AppSetting.baseUrl + `/orderitem`,
-    // deleteOrder: AppSetting.baseUrl + `/orderitem`,
-    getAllOrder: AppSetting.baseUrl + `/getordereditems`,
+    addOrder: AppSetting.baseUrlOrder + `/orderitem`,
+    // editOrder: AppSetting.baseUrlOrder + `/orderitem`,
+    // deleteOrder: AppSetting.baseUrlOrder + `/orderitem`,
+    getAllOrder: AppSetting.baseUrlOrder + `/getordereditems`,
   }
 
 
