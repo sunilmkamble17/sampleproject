@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { StorageType } from 'src/app/common/enum/storage.enum';
 import { Exception } from 'src/app/common/exception';
+import { CommonService } from 'src/app/services/common.service';
 import { LoginService } from 'src/app/services/login.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { ValidationConstant } from 'src/app/services/validation/validation.constant';
@@ -53,6 +54,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private loginService: LoginService,
     private storageService: StorageService,
+    private commonService: CommonService,
 
     ) { 
       this.validator = new Validator(this.config);
@@ -86,8 +88,8 @@ export class LoginComponent implements OnInit {
     this.loginLoader = true;
     const reqObj: any = {};
     reqObj.data = {
-      email: this.loginForm.value.userName,
-      pwd: this.loginForm.value.password
+      email: this.commonService.encryptData(this.loginForm.value.userName),
+      pwd: this.commonService.encryptData(this.loginForm.value.password)
     }
     this.loginService.login(reqObj).subscribe(
       (loginResponse: any) => {

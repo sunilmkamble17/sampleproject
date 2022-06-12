@@ -1,6 +1,6 @@
 var AWS = require("aws-sdk");
 const bcrypt = require('bcryptjs');
-const awsRegion = ("ap-south-1");//"localhost"
+const awsRegion = ("us-east-1");//"localhost"
 const TABLE_NAME = "User";
 var CryptoJS=require("crypto-js");
 
@@ -21,8 +21,8 @@ class UserService {
 	async register(userRequest) {
 		try {
 			console.log("UserService: register Start", userRequest);
-			userRequest.pwd = decryptData(userRequest.pwd)
-			userRequest.email= decryptData(userRequest.email)
+			userRequest.pwd = this.decryptData(userRequest.pwd)
+			userRequest.email= this.decryptData(userRequest.email)
 
 			let password = bcrypt.hashSync(userRequest.pwd, 10);
 			userRequest.pwd = password;
@@ -81,8 +81,8 @@ class UserService {
 		try {
 			console.log("UserService: login Start");
 
-			pwd = decryptData(pwd)
-			email= decryptData(email)
+			pwd = this.decryptData(pwd)
+			email= this.decryptData(email)
 
 			var params = {
 				TableName: TABLE_NAME,

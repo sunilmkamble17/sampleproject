@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
+import * as CryptoJS from 'crypto-js';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,16 @@ export class CommonService {
       localStorage.clear();
     }
     this.router.navigate(['/login']);
+  }
+
+  encryptSecretKey:string="orderkey";
+  encryptData(data:string) {
+    try {
+      return CryptoJS.AES.encrypt(JSON.stringify(data), this.encryptSecretKey).toString();
+    } catch (e) {
+      console.log(e);
+    }
+    return null
   }
 
   buildQuery(data: any) {
