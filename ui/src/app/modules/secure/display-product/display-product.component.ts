@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Exception } from 'src/app/common/exception';
+import { OrderService } from 'src/app/services/order.service';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class DisplayProductComponent implements OnInit {
   productList: any;
 
   constructor(
-    private productService: ProductService
+    private productService: ProductService,
+    private orderService: OrderService
   ) { }
 
   ngOnInit(): void {
@@ -30,6 +32,26 @@ export class DisplayProductComponent implements OnInit {
       (response: any) => {
         this.productList = response.Data;
         console.log(this.productList)
+      },
+      (error) => {
+        const toastMessage = Exception.exceptionMessage(error);
+        alert(toastMessage);
+        this.isLoader = false;
+      },
+    );
+  }
+
+  AddOrder() {
+    const reqobj: any = {};
+    reqobj.data = {
+      "price": "1",
+      "prod_name": "qwe",
+      "quantity_available": "100",
+      "supplier_email": "mahesh.walke@forcepoint.com"
+    };
+    this.orderService.addOrder(reqobj).subscribe(
+      (response: any) => {
+        alert('order added succesfully...');
       },
       (error) => {
         const toastMessage = Exception.exceptionMessage(error);

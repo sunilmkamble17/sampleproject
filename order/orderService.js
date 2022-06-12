@@ -24,6 +24,14 @@ class OrderService {
 			let response = await this.docClient.put(  JSON.parse( JSON.stringify( params ) )  ).promise();
 			let resp = {"Success": true, Message: "Product has been Ordered!", Data: response.Item, "error": {}};
 			console.log( "OrderService: orderitem End" );
+			//raise event to product microservice to reduce quantity
+			
+			console.log( "OrderService: event-->order created..." );
+			await axios.post("http://event-bus-srv:4001/event-bus/event",{
+              type:"orderCreated",
+              data:{resp}
+          	}).catch(e=>console.log(e.message));
+
 			return resp;
 		} catch ( error ) {
 			console.log( `OrderService: error occured while adding order item - ${error}` );

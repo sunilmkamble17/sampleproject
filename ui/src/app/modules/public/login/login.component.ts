@@ -96,6 +96,11 @@ export class LoginComponent implements OnInit {
         if (loginResponse.changePassword) {
           this.router.navigate(['/reset-password', loginResponse.userName]);
         } else {
+          if (loginResponse.Message == "User Does not exists!" || loginResponse.Success == false) {
+            alert(loginResponse.Message);
+            this.loginLoader = false;
+            return;
+          }
           this.storageService.save(StorageType.session, 'auth', JSON.stringify(loginResponse));
           this.router.navigate(['/dashboard']);
         }

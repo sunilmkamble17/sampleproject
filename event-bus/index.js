@@ -16,14 +16,10 @@ app.post("/event-bus/event", (req, resp) => {
 
   events.push(event);
   //echoing the event to every service / broadcast
-  // axios.post("http://user_svc:4002/event-bus/event/listener",event)
-  //       .catch(e=>console.log(e.message));
+  console.log( `EventBus: event received-->${event}` );
 
-  // axios.post("http://product_svc:4003/event-bus/event/listener",event)
-  //       .catch(e=>console.log(e.message));
-
-  // axios.post("http://order_svc:4004/event-bus/event/listener",event)
-  //       .catch(e=>console.log(e.message));
+  axios.post("http://product-srv:4003/event-bus/event/listener",event)
+        .catch(e=>console.log(e.message));
 
   resp.send({});
 });
