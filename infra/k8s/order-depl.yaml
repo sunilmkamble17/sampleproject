@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: order-depl
+  labels: 
+    app: order
 spec:
   replicas: 1
   selector:
@@ -15,6 +17,8 @@ spec:
       containers:
         - name: order
           image: sunilmkamble17/order
+          ports: 
+          - containerPort: 4004
 ---
 apiVersion: v1
 kind: Service

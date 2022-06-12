@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
  name: user-depl
+ labels:
+    app: user
 spec:
  replicas: 1
  selector:
@@ -14,7 +16,9 @@ spec:
   spec:
     containers:
      - name: user
-       image: sunilmkamble17/user
+       image: rkela1/user
+       ports: 
+        - containerPort: 4002
 ---
 apiVersion: v1
 kind: Service
