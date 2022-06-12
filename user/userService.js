@@ -5,9 +5,9 @@ const TABLE_NAME = "User";
 var CryptoJS=require("crypto-js");
 
 const dConfig = {
-    accessKeyId: "AKIAR6NAPAGZGCNSXS5R",
-    secretAccessKey: "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",
-    region: "ap-south-1"
+    accessKeyId: "AKIAVKRIPRWEQ3LADHZY",
+    secretAccessKey: "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",
+    region: "us-east-1"
 }
 AWS.config.update(dConfig);
 
