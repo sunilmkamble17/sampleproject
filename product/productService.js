@@ -2,7 +2,14 @@ var AWS = require("aws-sdk");
 const awsRegion = ("us-east-1");//"localhost"
 const TABLE_NAME = "Product";
 const CounterService = require('./counterService');
+var CryptoJS=require("crypto-js");
 
+const dConfig = {
+    accessKeyId: "AKIAVKRIPRWEQ3LADHZY",
+    secretAccessKey: "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",
+    region: "us-east-1"
+}
+AWS.config.update(dConfig);
 class ProductService {
     constructor() {
         this.docClient = new AWS.DynamoDB.DocumentClient({ region: awsRegion });
