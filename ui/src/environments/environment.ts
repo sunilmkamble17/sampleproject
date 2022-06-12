@@ -10,10 +10,15 @@ export const environment = {
   // baseUrlProduct: 'https://8x12yn4aj1.execute-api.us-east-1.amazonaws.com/dev/api', // Dev Environment
   // baseUrlOrder: 'https://8x12yn4aj1.execute-api.us-east-1.amazonaws.com/dev/api', // Dev Environment
 
-  baseUrlEventBus: 'localhost:4001',
-  baseUrlUser: 'localhost:4002',
-  baseUrlProduct: 'localhost:4003',
-  baseUrlOrder: 'localhost:4004',
+  // baseUrlEventBus: 'localhost:4001/api',
+  // baseUrlUser: 'localhost:4002/api',
+  // baseUrlProduct: 'localhost:4003/api',
+  // baseUrlOrder: 'localhost:4004/api',
+
+  baseUrlEventBus: 'http://order.com/api',
+  baseUrlUser: 'http://order.com/api',
+  baseUrlProduct: 'http://order.com/api',
+  baseUrlOrder: 'http://order.com/api',
   // baseUrl: '', // Test Environment
   // baseUrl: '', // UAT Environment
   // baseUrl: '', // Prod Environment

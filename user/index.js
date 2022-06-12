@@ -9,6 +9,21 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
+// app.use(cors({
+//     origin: '*'
+// }));
+app.options( "*", cors() ); // include before other routes
+
+app.use( ( req, res, next ) => {
+    res.setHeader( "content-type", "application/json" );
+    res.setHeader( "Access-Control-Allow-Origin", "*" );
+    res.setHeader( "Access-Control-Allow-Methods", "OPTION,POST, PUT, DELETE, GET" );
+    res.setHeader( "Access-Control-Allow-Headers", "Origin,Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With" );
+
+    res.setHeader( "Cache-Control", "no-cache" );
+    next();
+} );
+
 // ===============================================User===========================================================
 // https://esoug68jcf.execute-api.us-east-1.amazonaws.com/stage1/createuser
 // let req = {"email":"rachna.jaju@forcepoint.com","fname":"rachna","lname":"jaju","pwd":"Admin@123"}
