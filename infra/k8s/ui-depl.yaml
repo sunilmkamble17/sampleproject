@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
  name: ui-depl
+ labels:
+    app: ui
 spec:
  replicas: 1
  selector:
@@ -15,6 +17,8 @@ spec:
     containers:
      - name: ui
        image: sunilmkamble17/ui
+       ports:
+       - containerPort: 4200
 ---
 apiVersion: v1
 kind: Service
@@ -25,8 +29,7 @@ spec:
   selector:
     app: ui
   ports:
-    - name: ui
-      protocol: TCP
+    - protocol: TCP
       port: 4200
       targetPort: 4200
 

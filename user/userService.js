@@ -1,16 +1,29 @@
 var AWS = require("aws-sdk");
 const bcrypt = require('bcryptjs');
-const awsRegion = ("us-east-1");//"localhost"
+const awsRegion = ("ap-south-1");//"localhost"
 const TABLE_NAME = "User";
+var CryptoJS=require("crypto-js");
+
+const dConfig = {
+    accessKeyId: "AKIAR6NAPAGZGCNSXS5R",
+    secretAccessKey: "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",
+    region: "ap-south-1"
+}
+AWS.config.update(dConfig);
 
 class UserService {
+
 	constructor() {
-		this.docClient = new AWS.DynamoDB.DocumentClient({ region: awsRegion });
+		//this.docClient = new AWS.DynamoDB.DocumentClient({ region: awsRegion,AWS_ACCESS_KEY_ID:"AKIAR6NAPAGZGCNSXS5R",AWS_SECRET_ACCESS_KEY="kijd29qH8ohTAabsTN1Qser" });
+		this.docClient = new AWS.DynamoDB.DocumentClient({ region: awsRegion});
 	}
 
 	async register(userRequest) {
 		try {
 			console.log("UserService: register Start", userRequest);
+			userRequest.pwd = decryptData(userRequest.pwd)
+			userRequest.email= decryptData(userRequest.email)
+
 			let password = bcrypt.hashSync(userRequest.pwd, 10);
 			userRequest.pwd = password;
 
@@ -67,6 +80,10 @@ class UserService {
 	async login(email, pwd) {
 		try {
 			console.log("UserService: login Start");
+
+			pwd = decryptData(pwd)
+			email= decryptData(email)
+
 			var params = {
 				TableName: TABLE_NAME,
 				Key: { email: email }
@@ -153,6 +170,18 @@ class UserService {
 		throw err.code;
 	}
 
+	decryptData(data){
+		try {
+		  const bytes = CryptoJS.AES.decrypt(data, "orderkey");
+		  if (bytes.toString()) {
+			return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+		  }
+		  return data;
+		} catch (e) {
+		  console.log(e);
+		}
+	}
+	
 
 }
 

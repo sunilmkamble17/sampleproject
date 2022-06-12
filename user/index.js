@@ -3,10 +3,12 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const uuid = require('uuid');
 const axios = require('axios');
+const UserService = require("./userService")
 
 
 const app = express();
 app.use(cors());
+
 app.use(bodyParser.json());
 
 // ===============================================User===========================================================
