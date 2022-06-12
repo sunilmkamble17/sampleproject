@@ -16,7 +16,7 @@ spec:
   spec:
     containers:
      - name: user
-       image: rkela1/user
+       image: sunilmkamble17/user
        ports: 
         - containerPort: 4002
 ---
