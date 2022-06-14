@@ -44,10 +44,10 @@ export class DisplayProductComponent implements OnInit {
   AddOrder() {
     const reqobj: any = {};
     reqobj.data = {
-      "price": "1",
-      "prod_name": "qwe",
-      "quantity_available": "100",
-      "supplier_email": "mahesh.walke@forcepoint.com"
+      "email": "mahesh.walke@forcepoint.com",
+      "item_id": "11",
+      "order_status": "ordered",
+      "quantity": "1"
     };
     this.orderService.addOrder(reqobj).subscribe(
       (response: any) => {

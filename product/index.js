@@ -38,8 +38,13 @@ app.delete('/api/deleteproduct', async (req, res) => {
 
 // listening from other microservices
 app.post("/event-bus/event/listener", (req, resp) => {
-  const { type } = req.body;
+  productService = new ProductService();
+  const { type, data } = req.body;
   console.log("ProductService: Received event ", type);
+  if (type === 'orderCreated') {
+    console.log("response from order created",data.resp.Data);
+    productService.updateproductquantity(data.resp.Data);
+  }
   resp.send({});
 });
 

@@ -18,9 +18,11 @@ class ProductService {
     async createeditproduct(productRequest) {
         try {
             console.log("ProductService: createeditproduct Start");
-            let counterService = new CounterService();
-            let counter = await counterService.getCounter();
-            productRequest.item_id = counter;
+            if (!productRequest.item_id) {
+                let counterService = new CounterService();
+                let counter = await counterService.getCounter();
+                productRequest.item_id = counter;
+            }
             var params = {
                 TableName: TABLE_NAME,
                 Item: productRequest
@@ -90,6 +92,31 @@ class ProductService {
             console.log(`ProductService: deleteproduct error occurred: ${error.stack}`);
             throw error;
         }
+    }
+
+    async updateproductquantity(req) {
+        console.log("ProductService: updateproductquantity start", req);
+        let product = await this.getproductbyid(req.item_id);
+        product.quantity_available = product.quantity_available - +req.quantity;
+        await this.createeditproduct(product);
+        console.log("ProductService: product quantity updated");
+    }
+
+    async getproductbyid(item_id) {
+        try {
+			console.log("ProductService: getproductbyid Start");
+			var params = {
+				TableName: TABLE_NAME,
+				Key: { item_id: item_id }
+			};
+            console.log("getproductbyid------>", item_id);
+			let resp = await this.docClient.get(JSON.parse(JSON.stringify(params))).promise();
+            console.log("ProductService: getproductbyid end");
+            return resp.Item;
+		} catch (error) {
+			console.log(`ProductService: getproductbyid error occurred: ${error.stack}`);
+			throw error;
+		}
     }
 
 

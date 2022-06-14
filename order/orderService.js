@@ -2,6 +2,7 @@ var AWS = require( "aws-sdk" );
 const awsRegion = ( "us-east-1" );//"localhost"
 const TABLE_NAME = "Order";
 var CryptoJS=require("crypto-js");
+const axios = require('axios');
 
 const dConfig = {
     accessKeyId: "AKIAVKRIPRWEQ3LADHZY",
@@ -22,7 +23,8 @@ class OrderService {
 				Item: orderRequest
 			};
 			let response = await this.docClient.put(  JSON.parse( JSON.stringify( params ) )  ).promise();
-			let resp = {"Success": true, Message: "Product has been Ordered!", Data: response.Item, "error": {}};
+			console.log('order created response--------->', response);
+			let resp = {"Success": true, Message: "Product has been Ordered!", Data: orderRequest, "error": {}};
 			console.log( "OrderService: orderitem End" );
 			//raise event to product microservice to reduce quantity
 			
