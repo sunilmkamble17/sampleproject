@@ -15,7 +15,7 @@ export class RegisterService {
   ) { }
   
   register(reqObj: any) {
-    return this.commonAPIFuncService.get(AppSetting.signup.register + this.commonService.buildQuery(reqObj.data)).pipe(
+    return this.commonAPIFuncService.post(AppSetting.signup.register, reqObj.data).pipe(
       tap((_) => this.commonService.log(`RegisterService: register successful`)),
       catchError(this.commonService.handleError('RegisterService: register failed')),
     );

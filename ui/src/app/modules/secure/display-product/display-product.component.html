@@ -9,18 +9,19 @@
           <p class="card-text"><small>Quantity:</small> {{product.quantity_available}}</p>
           <p class="card-text text-truncate"><small>Supplier:</small> {{product.supplier_email}}</p>
 
-          <div class="input-group mb-3">
+          <div class="input-group mb-3" *ngIf="product.quantity_available >= 1">
             <div class="input-group-prepend">
-              <button type="button" class="btn btn-light btn-sm">-</button>
+              <button type="button" class="btn btn-light btn-sm" (click)="manageQuantity({'product':product, 'operation':'remove'})">-</button>
             </div>
             <!-- <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1"> -->
-            <span>&nbsp;{{1}}&nbsp;</span>
+            <span>&nbsp;{{product.orderQuantity}}&nbsp;</span>
             <div class="input-group-append">
-              <button type="button" class="btn btn-light btn-sm">+</button>
+              <button type="button" class="btn btn-light btn-sm" (click)="manageQuantity({'product':product, 'operation':'add'})">+</button>
             </div>
 
-            <button type="button" class="btn btn-primary float-right" (click)="AddOrder()">Add order</button>
+            <button type="button" class="btn btn-primary float-right" (click)="AddOrder(product)">Add order</button>
           </div>
+          <p *ngIf="product.quantity_available < 1">Out of stock</p>
           
         </div>
       </div>

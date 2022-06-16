@@ -101,7 +101,9 @@ export class LoginComponent implements OnInit {
             this.loginLoader = false;
             return;
           }
-          this.storageService.save(StorageType.session, 'auth', JSON.stringify(loginResponse));
+          let loggedInUserDetails: any = {};
+          loggedInUserDetails.email = this.loginForm.value.userName;
+          this.storageService.save(StorageType.session, 'auth', JSON.stringify(loggedInUserDetails));
           this.router.navigate(['/dashboard']);
         }
 
