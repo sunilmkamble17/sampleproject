@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 // let req = {"data":{"email":"sunil.kamble@forcepoint.com","item_id":"113","order_status":"ordered","quantity":"2"}};
 app.post('/api/orderitem', async (req, res) => {
   orderService = new OrderService();
-  let request = { "supplier_email": req.body.email, "item_id": req.body.item_id, "order_status": req.body.order_status, "quantity": req.body.quantity };
+  let request = { "supplier_email": req.body.email, "item_id": req.body.item_id, "order_status": req.body.order_status, "quantity": req.body.quantity,"prod_name": req.body.prod_name };
   let response = await orderService.orderitem(request);
   console.log(response);
   res.send(response);
