@@ -34,6 +34,14 @@ export class ValidationConstant {
     postalCode: { name: 'Postal (Zip) Code', maxLength: 10, minLength: 5 },
   };
 
+  static signup = {
+    email: { name: 'Email', maxLength: 50, minLength: 1 },
+    firstName: { name: 'First Name', maxLength: 50, minLength: 1 },
+    lastName: { name: 'Last Name', maxLength: 50, minLength: 1 },
+    password: { name: 'Password', maxLength: 50, minLength: 5 },
+    confirmPassword: { name: 'Confirm Password', maxLength: 50, minLength: 5 },
+  };
+
   static login = {
     username: { name: 'User Name', maxLength: 50, minLength: 7 },
     password: { name: 'Password', maxLength: 50, minLength: 8 },

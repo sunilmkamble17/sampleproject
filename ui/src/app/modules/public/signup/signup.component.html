@@ -1,23 +1,23 @@
 <div class="login-form">    
-    <form>
+    <form novalidate [formGroup]="signupForm">
 		<!-- <div class="avatar"><i class="material-icons">&#xE7FF;</i></div> -->
     	<h4 class="modal-title">Signup</h4>
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Email" required="required">
+            <input type="text" class="form-control" placeholder="Email" required="required" formControlName="email">
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="First Name" required="required">
+            <input type="text" class="form-control" placeholder="First Name" required="required" formControlName="firstname">
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Last Name" required="required">
+            <input type="text" class="form-control" placeholder="Last Name" required="required" formControlName="lastName">
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" placeholder="Password" required="required">
+            <input type="password" class="form-control" placeholder="Password" required="required" formControlName="password">
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" placeholder="Confirm Password" required="required">
+            <input type="password" class="form-control" placeholder="Confirm Password" required="required" formControlName="confirmPassword">
         </div>
-        <input type="submit" class="btn btn-primary btn-block btn-lg" value="Signup">              
+        <input type="submit" class="btn btn-primary btn-block btn-lg" value="Signup" (click)="signup()">              
     </form>			
     <div class="text-center small">Already have an account? <a href="javascript:void(0)" (click)="redirectToLogin()">Login</a></div>
 </div>

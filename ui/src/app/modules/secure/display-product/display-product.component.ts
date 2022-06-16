@@ -52,6 +52,7 @@ export class DisplayProductComponent implements OnInit {
     this.orderService.addOrder(reqobj).subscribe(
       (response: any) => {
         alert('order added succesfully...');
+        this.ngOnInit();
       },
       (error) => {
         const toastMessage = Exception.exceptionMessage(error);
