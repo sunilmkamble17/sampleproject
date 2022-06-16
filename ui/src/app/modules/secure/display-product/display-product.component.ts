@@ -80,11 +80,11 @@ export class DisplayProductComponent implements OnInit {
   }
 
   manageQuantity(data: any) {
-    if (data.operation === 'add' && data.prduct.quantity_available > data.prduct.orderQuantity) {
-      data.prduct.orderQuantity += 1; 
+    if (data.operation === 'add' && data.product.quantity_available > data.product.orderQuantity) {
+      data.product.orderQuantity = data.product.orderQuantity + 1; 
     }
-    if (data.operation === 'remove' && data.prduct.orderQuantity >= 2) {
-      data.prduct.orderQuantity -= 1;       
+    if (data.operation === 'remove' && data.product.orderQuantity >= 2) {
+      data.product.orderQuantity = data.product.orderQuantity - 1;       
     }
   }
 

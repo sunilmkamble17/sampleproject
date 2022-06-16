@@ -11,12 +11,12 @@
 
           <div class="input-group mb-3" *ngIf="product.quantity_available >= 1">
             <div class="input-group-prepend">
-              <button type="button" class="btn btn-light btn-sm" (click)="manageQuantity({'prodct':product, 'operation':'remove'})">-</button>
+              <button type="button" class="btn btn-light btn-sm" (click)="manageQuantity({'product':product, 'operation':'remove'})">-</button>
             </div>
             <!-- <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1"> -->
             <span>&nbsp;{{product.orderQuantity}}&nbsp;</span>
             <div class="input-group-append">
-              <button type="button" class="btn btn-light btn-sm" (click)="manageQuantity('add')">+</button>
+              <button type="button" class="btn btn-light btn-sm" (click)="manageQuantity({'product':product, 'operation':'add'})">+</button>
             </div>
 
             <button type="button" class="btn btn-primary float-right" (click)="AddOrder(product)">Add order</button>
