@@ -5,8 +5,8 @@ var CryptoJS=require("crypto-js");
 const axios = require('axios');
 
 const dConfig = {
-    accessKeyId: "AKIAVKRIPRWEQ3LADHZY",
-    secretAccessKey: "VfWu5jTjW1KtWi/g8TcfZNzqVDgBYQW7Qi4RfqG7",
+    accessKeyId: "dummy",
+    secretAccessKey: "dummy",
     region: "us-east-1"
 }
 AWS.config.update(dConfig);
